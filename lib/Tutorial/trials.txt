@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+import 'package:geezonline/Tutorial/Image.dart';
+import 'package:geezonline/Tutorial/elevatedbutton.dart';
+import 'package:geezonline/Tutorial/icons.dart';
+import 'package:geezonline/Tutorial/listview.dart';
+
+import 'package:geezonline/screens/home_screen.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Geez Online',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primaryColor: Colors.purple, accentColor: Color(0xFFFEF9EB)),
+      home: Scaffold(
+        bottomNavigationBar: BottomAppBar(
+            notchMargin: 5.0,
+            shape: CircularNotchedRectangle(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                SizedBox(
+                  width: 20,
+                ),
+                IconButton(onPressed: () {}, icon: Icon(Icons.shop)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
+              ],
+            )),
+
+        backgroundColor: Color.fromARGB(255, 233, 233, 233),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // extendBodyBehindAppBar: true,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
+        drawer: Drawer(
+          child: ListView(children: const [
+            UserAccountsDrawerHeader(
+              accountName: Text("Beki"),
+              accountEmail: Text("Bereket.a.gedefaw@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                foregroundImage: AssetImage("assets/images/greg.jpg"),
+              ),
+              otherAccountsPictures: [
+                CircleAvatar(
+                  foregroundImage: AssetImage("assets/images/greg.jpg"),
+                ),
+                CircleAvatar(
+                  foregroundImage: AssetImage("assets/images/greg.jpg"),
+                ),
+              ],
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text("first"),
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text("first"),
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text("first"),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: Text("Second"),
+            )
+          ]),
+        ),
+        appBar: AppBar(
+            title: const Text("Title"),
+            // leading: IconButton(
+            //   icon: const Icon(Icons.menu),
+            //   onPressed: () {},
+            // ),
+            centerTitle: true,
+            flexibleSpace: Image(
+              image: NetworkImage(
+                  "https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+              fit: BoxFit.cover,
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.shop),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () {},
+              ),
+            ]),
+        body: listvieww(),
+      ),
+    );
+  }
+}
