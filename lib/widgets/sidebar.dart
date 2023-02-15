@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class SidebarWidget extends StatelessWidget {
   SidebarWidget({Key? key}) : super(key: key);
 
-  final user = FirebaseAuth.instance.currentUser!;
-  
+  // final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,8 @@ class SidebarWidget extends StatelessWidget {
       UserAccountsDrawerHeader(
         decoration: BoxDecoration(color: Colors.white),
         accountName: Text("Beki", style: TextStyle(color: Colors.black)),
-        accountEmail: Text(user.email!, style: TextStyle(color: Colors.black)),
+        accountEmail: Text("Bereket.a.gedefaw@gmail.com",
+            style: TextStyle(color: Colors.black)),
         currentAccountPicture: CircleAvatar(
           foregroundImage: AssetImage("assets/images/greg.jpg"),
         ),
@@ -26,11 +26,11 @@ class SidebarWidget extends StatelessWidget {
         //   ),
         // ],
       ),
-      ListTile(
-        leading: Icon(Icons.add),
-        title: Text("first"),
-        onTap: () {},
-      ),
+      // ListTile(
+      //   leading: Icon(Icons.add),
+      //   title: Text("first"),
+      //   onTap: () {},
+      // ),
       ListTile(
         leading: Icon(Icons.logout),
         title: Text("Log out"),

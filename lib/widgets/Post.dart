@@ -69,7 +69,7 @@ class PostWidget extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                       text:
-                          "The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.",
+                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
                       children: [
                         TextSpan(
                           text: "#noSence",
@@ -82,8 +82,8 @@ class PostWidget extends StatelessWidget {
                       ],
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w100)),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w300)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -129,8 +129,8 @@ class PostWidget extends StatelessWidget {
                       onPressed: () {},
                       icon: Icon(
                         // <-- Icon
-                        color: Colors.black,
                         FontAwesomeIcons.retweet,
+                        color: Colors.black,
                         size: 18.0,
                       ),
                       label: Text('34',

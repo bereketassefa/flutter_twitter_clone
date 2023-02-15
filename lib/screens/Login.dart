@@ -2,16 +2,50 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geezonline/widgets/Button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   var emailController = TextEditingController();
+
   var passwordController = TextEditingController();
 
+  var showLoader = false;
+  var message = "";
+  var issignup = true;
+
+  void signInWithGoogle() async {
+    GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+    UserCredential user =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    print(user.user?.displayName);
+  }
+
   void logUser() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
+    setState(() {
+      this.showLoader = true;
+    });
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        this.message = e.message!;
+      });
+      // print(e.message);
+    }
+    this.showLoader = false;
   }
 
   @override
@@ -36,38 +70,12 @@ class LoginScreen extends StatelessWidget {
             child: Text("So what's happening in the world right now",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
           ),
-          Container(
-            child: Column(
-              children: [
-                TextField(
-                  controller: emailController,
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    hintText: 'Email',
-                  ),
-                ),
-                TextField(
-                  controller: passwordController,
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                  ),
-                ),
-                ElevatedButton(onPressed: logUser, child: Text("Log in"))
-                // AppleBtn1(
-                //   onPressed: () {},
-                //   brand: 'Apple',
-                //   link:
-                //       'https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/socials%2Fapple-black-logo.png?alt=media&token=c44581fa-6fd2-4ae2-bd85-18bfbe6386d2',
-                // ),
-                // AppleBtn1(
-                //   onPressed: () {},
-                //   brand: 'Google',
-                //   link:
-                //       'https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/crypto%2Fsearch%20(2).png?alt=media&token=24a918f7-3564-4290-b7e4-08ff54b3c94c',
-                // ),
-              ],
-            ),
+          Column(
+            children: [
+              GoogleBtn1(
+                onPressed: signInWithGoogle,
+              )
+            ],
           )
         ],
       ),

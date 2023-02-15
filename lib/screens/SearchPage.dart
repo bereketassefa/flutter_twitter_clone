@@ -19,6 +19,7 @@ class Search extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: 500, maxHeight: 40),
             child: TextField(
               textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.bottom,
               decoration: InputDecoration(
                 hintText: 'Search Twitter',
                 border: OutlineInputBorder(
@@ -63,9 +64,9 @@ class Search extends StatelessWidget {
         body: const TabBarView(
           children: [
             SearchCard(),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
-            Icon(Icons.directions_bike),
+            SearchCard(),
+            SearchCard(),
+            SearchCard(),
           ],
         ),
       ),

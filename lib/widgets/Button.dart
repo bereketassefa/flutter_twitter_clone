@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AppleBtn1 extends StatelessWidget {
+class GoogleBtn1 extends StatelessWidget {
   final Function() onPressed;
-  final String brand;
-  final String link;
-  AppleBtn1(
-      {required this.onPressed,
-      required this.brand,
-      required this.link,
-      Key? key})
-      : super(key: key);
+  const GoogleBtn1({
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
-  // ignore: empty_constructor_bodies
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,13 +24,14 @@ class AppleBtn1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.network(
-                link,
+                "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/crypto%2Fsearch%20(2).png?alt=media&token=24a918f7-3564-4290-b7e4-08ff54b3c94c",
                 width: 20,
               ),
               const SizedBox(
                 width: 10,
               ),
-              Text(brand, style: TextStyle(color: Colors.black, fontSize: 16)),
+              const Text("Google",
+                  style: TextStyle(color: Colors.black, fontSize: 16)),
             ],
           ),
           onPressed: onPressed,

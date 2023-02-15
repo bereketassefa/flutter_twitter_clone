@@ -15,8 +15,8 @@ class AuthPage extends StatelessWidget {
           if (snapshot.hasData) {
             return HomeScreen();
           } else {
-            // return LoginScreen();
-            return HomeScreen();
+            return LoginScreen();
+            // return HomeScreen();
           }
         },
       ),
