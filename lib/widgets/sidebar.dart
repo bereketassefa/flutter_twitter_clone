@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:heroicons/heroicons.dart';
 
 class SidebarWidget extends StatelessWidget {
   SidebarWidget({Key? key}) : super(key: key);
@@ -31,6 +33,21 @@ class SidebarWidget extends StatelessWidget {
       //   title: Text("first"),
       //   onTap: () {},
       // ),
+      ListTile(
+        leading: Icon(FontAwesomeIcons.comment),
+        title: Text("Topics"),
+        onTap: () {},
+      ),
+      ListTile(
+        leading: Icon(Icons.bookmark),
+        title: Text("Bookmarks"),
+        onTap: () {},
+      ),
+      ListTile(
+        leading: Icon(Icons.list),
+        title: Text("Lists"),
+        onTap: () {},
+      ),
       ListTile(
         leading: Icon(Icons.logout),
         title: Text("Log out"),

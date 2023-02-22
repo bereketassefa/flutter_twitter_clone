@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:geezonline/Tutorial/provider.dart';
 import 'package:geezonline/screens/Inbox.dart';
 import 'package:geezonline/screens/Login.dart';
 import 'package:geezonline/screens/Notification.dart';
@@ -12,18 +11,6 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-// class TwitterClone extends StatelessWidget {
-//   const TwitterClone({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: MyHomePage(),
-//       // home: HomeScreen(),
-//     );
-//   }
-// }
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -31,12 +18,9 @@ void main() async {
   );
   runApp(
     MaterialApp(
-      // home: MyApp(),
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => AuthPage(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
         '/postDetail': (context) => const PostDetailWidget(),
       },
     ),
